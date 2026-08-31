@@ -10,7 +10,12 @@ const inter = Inter({
   variable: '--font-sans',
 });
 
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : 'https://sankalp-mehrotra-delta.vercel.app';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Sankalp Mehrotra | Product Management Portfolio',
   description:
     'Portfolio of Sankalp Mehrotra, an MBA Marketing student with a Mechanical Engineering background exploring Product Management, technology, analytics, and AI.',
@@ -29,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://sankalpmehrotra.com',
+    url: siteUrl,
     title: 'Sankalp Mehrotra | Product Management Portfolio',
     description:
       'Aspiring Product Manager combining engineering, business, marketing, and technology to solve meaningful problems.',
