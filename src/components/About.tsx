@@ -78,11 +78,11 @@ export default function About() {
             className="lg:col-span-5"
           >
             <div className="card-base bg-[#101014] border-white/10 shadow-xl">
-              <h3 className="text-xs font-semibold text-purple-400 tracking-widest uppercase mb-6 flex items-center gap-2">
+              <h3 className="text-xs font-semibold text-purple-400 tracking-widest uppercase mb-8 flex items-center gap-2">
                 <span>Profile Snapshot</span>
               </h3>
 
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {highlights.map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-300">
@@ -90,7 +90,7 @@ export default function About() {
                     </div>
                     <div>
                       <p className="text-[11px] text-neutral-500 tracking-wider uppercase font-medium">{item.label}</p>
-                      <p className="text-neutral-200 text-sm font-semibold mt-0.5">{item.value}</p>
+                      <p className="text-neutral-200 text-sm font-semibold mt-1.5">{item.value}</p>
                     </div>
                   </div>
                 ))}

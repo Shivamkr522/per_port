@@ -18,7 +18,7 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
 
   return (
     <div
-      className={`card-base transition-all duration-500 max-w-4xl mx-auto ${
+      className={`card-base transition-all duration-500 ${
         isActive
           ? 'border-purple-500/30 shadow-[0_0_40px_rgba(139,92,246,0.15)] bg-[#121215]'
           : 'opacity-60 scale-95 bg-[#0e0e0e]'
@@ -40,11 +40,13 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
               <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-center mb-3 text-purple-300 shadow-[0_0_20px_rgba(139,92,246,0.15)]">
                 <Compass size={28} />
               </div>
-              <p className="text-sm font-bold text-neutral-200">Engineering & Product Study</p>
-              <p className="text-xs text-purple-400/90 font-medium mt-1">Flywheel Energy Recovery</p>
-              <span className="text-[10px] text-neutral-500 mt-2 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/5">
-                Mechanical Prototype
-              </span>
+              <p className="text-sm font-bold text-neutral-200">{project.title}</p>
+              <p className="text-xs text-purple-400/90 font-medium mt-1">Case Study</p>
+              {project.technologies && project.technologies.length > 0 && (
+                <span className="text-[10px] text-neutral-500 mt-2 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/5">
+                  {project.technologies[0]}
+                </span>
+              )}
             </div>
           )}
         </div>
@@ -54,7 +56,7 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/25 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-3">
               <Sparkles size={12} className="text-purple-400" />
-              <span>Mechanical Engineering & Innovation</span>
+              <span>Featured Project</span>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold text-[#f5f5f7] mb-3 leading-snug">
@@ -68,7 +70,7 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
               </p>
             ) : (
               <p className="text-neutral-400 text-sm leading-relaxed mb-5">
-                A kinetic energy recovery mechanism designed for bicycles that captures braking energy into a rotating flywheel and transfers it back to assist acceleration.
+                Project description is being finalized and will be added here soon.
               </p>
             )}
 
@@ -79,7 +81,7 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
                 <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
                   {!isPlaceholder(project.problem)
                     ? project.problem
-                    : 'Conventional cycling loses substantial kinetic energy during braking, increasing physical fatigue during stop-and-go urban commutes.'}
+                    : 'Problem statement is being finalized and will be added here soon.'}
                 </p>
               </div>
 
@@ -88,7 +90,7 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
                 <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
                   {!isPlaceholder(project.approach)
                     ? project.approach
-                    : 'Designed a clutch-engaged flywheel transmission system that safely harnesses rotational inertia during deceleration without adding excessive dead weight.'}
+                    : 'Approach details are being finalized and will be added here soon.'}
                 </p>
               </div>
 
@@ -97,7 +99,7 @@ export default function ProjectCard({ project, isActive }: ProjectCardProps) {
                 <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
                   {!isPlaceholder(project.outcome)
                     ? project.outcome
-                    : 'Reinforced structured mechanical design, trade-off analysis between efficiency and usability, and hands-on system prototyping.'}
+                    : 'Outcomes and key learnings are being finalized and will be added here soon.'}
                 </p>
               </div>
             </div>

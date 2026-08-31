@@ -8,16 +8,29 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'business-product',
     name: 'Business & Product',
-    skills: ['Product Management', 'Marketing', 'Problem Solving', 'Presentation'],
+    skills: [
+      'B2B Sales',
+      'Dealer Relationship Management',
+      'Territory Management',
+      'Customer Retention',
+      'Pricing & Proposals',
+      'Negotiation',
+    ],
   },
   {
     id: 'analytics-productivity',
     name: 'Analytics & Productivity',
-    skills: ['Microsoft Excel', 'Microsoft PowerPoint', 'Power BI'],
+    skills: [
+      'Microsoft Excel',
+      'Data Analysis',
+      'Sales Analysis',
+      'Microsoft PowerPoint',
+      'Excel-Based Account Tracking',
+    ],
   },
   {
     id: 'technology',
     name: 'Technology',
-    skills: ['Java', 'AI Tools / Artificial Intelligence'],
+    skills: ['Python (Fundamentals)', 'AI-Assisted Development', 'Microsoft Office'],
   },
 ];

@@ -17,14 +17,17 @@ export default function Experience() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14"
+          className="text-center mb-14"
         >
-          <div className="section-label">
+          <div className="section-label justify-center">
             <span className="dot-accent" />
             <span>Career Path</span>
           </div>
           <h2 className="section-heading">Professional Journey</h2>
-          <p className="section-subheading">
+          <p
+            className="section-subheading mx-auto max-w-[50rem] text-center"
+            style={{ maxWidth: '50rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}
+          >
             Track record of project execution, business problem solving, and collaborative impact.
           </p>
         </motion.div>

@@ -4,10 +4,10 @@ export const personal = {
   location: 'Lucknow, India',
   email: 'sankalp.mehrotra2@gmail.com',
   phone: '8299483299',
-  linkedin: '[ADD LINKEDIN URL]',
+  linkedin: 'https://www.linkedin.com/in/sankalp-mehrotra',
   github: '[ADD GITHUB URL]',
   title: 'Aspiring Product Manager',
   headline: 'Bridging Engineering, Business & Technology to Build Products That Matter',
   resumePath: '/resume.pdf',
-  profileImage: '',
+  profileImage: '/profile-avatar.jpg',
 } as const;

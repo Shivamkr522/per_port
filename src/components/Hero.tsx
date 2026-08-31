@@ -41,7 +41,7 @@ export default function Hero() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Status Pill Badge */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/25 mb-6 text-purple-300 text-xs font-semibold tracking-wide">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/25 mb-8 text-purple-300 text-xs font-semibold tracking-wide">
                 <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
                 <span>Aspiring Product Manager • MBA (Marketing)</span>
               </div>
@@ -52,12 +52,12 @@ export default function Hero() {
               </h1>
 
               {/* Sub-headline / Core Value Proposition */}
-              <p className="text-lg sm:text-xl md:text-2xl text-neutral-200 font-medium leading-snug mb-5 max-w-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-neutral-200 font-medium leading-snug mb-7 max-w-2xl">
                 Bridging engineering precision, business strategy, and marketing insight to solve real-world problems.
               </p>
 
               {/* Supporting Bio */}
-              <p className="text-sm sm:text-base text-neutral-400 leading-relaxed mb-10 max-w-xl">
+              <p className="text-sm sm:text-base text-neutral-400 leading-relaxed mb-12 max-w-xl">
                 With a B.Tech foundation in Mechanical Engineering and currently pursuing an MBA in Marketing at UPES, I bring structured analytical problem-solving to product strategy. Passionate about user-centric product development, data-informed decisions, and emerging AI tools.
               </p>
 
@@ -103,6 +103,7 @@ export default function Hero() {
                     src={personal.profileImage}
                     alt={`${personal.name} - Aspiring Product Manager`}
                     fill
+                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 240px"
                     className="object-cover"
                     priority
                     onError={() => setImageError(true)}

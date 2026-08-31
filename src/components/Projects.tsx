@@ -64,8 +64,11 @@ export default function Projects() {
             <span>Featured Case Studies</span>
           </div>
           <h2 className="section-heading">Projects & Practical Work</h2>
-          <p className="section-subheading mx-auto">
-            Hands-on engineering and product initiatives where I apply analytical problem solving, systems architecture, and business viability.
+          <p
+            className="section-subheading mx-auto max-w-[50rem] text-center"
+            style={{ maxWidth: '50rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}
+          >
+            Hands-on engineering and product initiatives where I apply analytical problem solving, systems architecture, and business viability. 
           </p>
         </motion.div>
       </div>

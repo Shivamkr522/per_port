@@ -95,7 +95,7 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] rounded-full px-4 py-1.5 backdrop-blur-sm">
+          <nav className="hidden md:flex items-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-full px-4 py-1.5 backdrop-blur-sm">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (

@@ -16,14 +16,17 @@ export default function Education() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14"
+          className="text-center mb-14"
         >
-          <div className="section-label">
+          <div className="section-label justify-center">
             <span className="dot-accent" />
             <span>Academic Background</span>
           </div>
           <h2 className="section-heading">Education</h2>
-          <p className="section-subheading">
+          <p
+            className="section-subheading mx-auto max-w-[50rem] text-center"
+            style={{ maxWidth: '50rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}
+          >
             Dual foundation across business administration and core mechanical engineering.
           </p>
         </motion.div>

@@ -30,7 +30,10 @@ export default function Skills() {
             <span>Core Competencies</span>
           </div>
           <h2 className="section-heading">Skills & Toolset</h2>
-          <p className="section-subheading mx-auto">
+          <p
+            className="section-subheading mx-auto max-w-[50rem] text-center"
+            style={{ maxWidth: '50rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}
+          >
             A balanced toolkit combining business thinking, analytical frameworks, and technological foundations to drive product execution.
           </p>
         </motion.div>

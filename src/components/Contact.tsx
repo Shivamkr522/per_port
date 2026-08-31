@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
-import { LinkedInIcon, GitHubIcon } from '@/components/Icons';
+import { LinkedInIcon } from '@/components/Icons';
 import { personal } from '@/data/personal';
 
 export default function Contact() {
@@ -39,11 +39,6 @@ export default function Contact() {
       label: 'LinkedIn',
       href: personal.linkedin,
     },
-    {
-      Icon: GitHubIcon,
-      label: 'GitHub',
-      href: personal.github,
-    },
   ];
 
   return (
@@ -60,13 +55,16 @@ export default function Contact() {
             <span>Get In Touch</span>
           </div>
           <h2 className="section-heading">Let&apos;s Connect.</h2>
-          <p className="section-subheading mx-auto">
+          <p
+            className="section-subheading mx-auto max-w-[50rem] text-center"
+            style={{ maxWidth: '50rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}
+          >
             Whether you&apos;re a recruiter, a Product Management professional, a company looking for
             fresh perspectives, or a collaborator with an interesting idea — I&apos;d love to hear from you.
           </p>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto ">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -76,11 +74,11 @@ export default function Contact() {
             {/* Contact Items */}
             <div className="space-y-6 mb-8">
               {contactItems.map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
+                <div key={item.label} className="flex items-center justify-center gap-4">
                   <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
                     <item.icon size={18} className="text-[#a78bfa]" />
                   </div>
-                  <div className="flex-grow">
+                  <div className="text-left">
                     <p className="text-xs text-neutral-400 tracking-wider uppercase mb-0.5">{item.label}</p>
                     {item.href ? (
                       <a
@@ -98,9 +96,9 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="pt-6 border-t border-white/10">
+            <div className="pt-6 border-t border-white/10 text-center">
               <p className="text-xs text-neutral-400 tracking-wider uppercase mb-4">Find Me Online</p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap justify-center gap-3">
                 {socialLinks.map((link) => (
                   isPlaceholder(link.href) ? (
                     <div
