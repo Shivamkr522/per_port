@@ -9,15 +9,15 @@ import { personal } from '@/data/personal';
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [copied, setCopied] = useState(false);
+  const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
-  const handleCopyEmail = async () => {
+  const handleCopy = async (value: string, label: string) => {
     try {
-      await navigator.clipboard.writeText(personal.email);
+      await navigator.clipboard.writeText(value);
     } catch {
       // Fallback for browsers without Clipboard API support
       const textarea = document.createElement('textarea');
-      textarea.value = personal.email;
+      textarea.value = value;
       textarea.style.position = 'fixed';
       textarea.style.opacity = '0';
       document.body.appendChild(textarea);
@@ -25,12 +25,12 @@ export default function Contact() {
       try {
         document.execCommand('copy');
       } catch {
-        // Clipboard copy unsupported — the email is still visible to select manually
+        // Clipboard copy unsupported — the value is still visible to select manually
       }
       document.body.removeChild(textarea);
     }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedItem(label);
+    setTimeout(() => setCopiedItem((current) => (current === label ? null : current)), 2000);
   };
 
   const isPlaceholder = (val: string) => !val || val.startsWith('[ADD');
@@ -41,18 +41,21 @@ export default function Contact() {
       label: 'Email',
       value: personal.email,
       href: `mailto:${personal.email}`,
+      copyValue: personal.email,
     },
     {
       icon: Phone,
       label: 'Phone',
       value: personal.phone,
       href: `tel:+91${personal.phone}`,
+      copyValue: personal.phone,
     },
     {
       icon: MapPin,
       label: 'Location',
       value: personal.location,
       href: '',
+      copyValue: '',
     },
   ];
 
@@ -103,16 +106,32 @@ export default function Contact() {
                   </div>
                   <div className="text-left">
                     <p className="text-xs text-neutral-400 tracking-wider uppercase mb-0.5">{item.label}</p>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-[#f5f5f7] hover:text-[#a78bfa] transition-colors duration-300 text-sm md:text-base font-medium"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-[#f5f5f7] text-sm md:text-base font-medium">{item.value}</p>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="text-[#f5f5f7] hover:text-[#a78bfa] transition-colors duration-300 text-sm md:text-base font-medium"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-[#f5f5f7] text-sm md:text-base font-medium">{item.value}</p>
+                      )}
+                      {item.copyValue && (
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(item.copyValue, item.label)}
+                          aria-label={`Copy ${item.label.toLowerCase()}`}
+                          className="text-neutral-500 hover:text-[#a78bfa] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-purple-500/50 rounded p-0.5"
+                        >
+                          {copiedItem === item.label ? (
+                            <Check size={14} className="text-purple-400" />
+                          ) : (
+                            <Copy size={14} />
+                          )}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -158,24 +177,14 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-center mt-10"
           >
-            <div className="flex flex-col items-center gap-3">
-              <a
-                href={`mailto:${personal.email}`}
-                className="btn-primary"
-              >
-                <Mail size={16} />
-                <span>Send Me an Email</span>
-                <ArrowUpRight size={14} />
-              </a>
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-[#a78bfa] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-purple-500/50 rounded"
-              >
-                {copied ? <Check size={13} className="text-purple-400" /> : <Copy size={13} />}
-                <span>{copied ? 'Copied to clipboard' : `Or copy: ${personal.email}`}</span>
-              </button>
-            </div>
+            <a
+              href={`mailto:${personal.email}`}
+              className="btn-primary"
+            >
+              <Mail size={16} />
+              <span>Send Me an Email</span>
+              <ArrowUpRight size={14} />
+            </a>
           </motion.div>
         </div>
       </div>
