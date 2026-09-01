@@ -64,7 +64,7 @@ export default function Hero() {
               {/* CTAs */}
               <div className="flex flex-wrap items-center gap-4">
                 <button
-                  onClick={() => scrollTo('#projects')}
+                  onClick={() => scrollTo('#experience')}
                   className="btn-primary group"
                 >
                   <span>View My Work</span>

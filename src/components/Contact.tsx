@@ -1,14 +1,37 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { LinkedInIcon } from '@/components/Icons';
 import { personal } from '@/data/personal';
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personal.email);
+    } catch {
+      // Fallback for browsers without Clipboard API support
+      const textarea = document.createElement('textarea');
+      textarea.value = personal.email;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+      } catch {
+        // Clipboard copy unsupported — the email is still visible to select manually
+      }
+      document.body.removeChild(textarea);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const isPlaceholder = (val: string) => !val || val.startsWith('[ADD');
 
@@ -135,14 +158,24 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-center mt-10"
           >
-            <a
-              href={`mailto:${personal.email}`}
-              className="btn-primary"
-            >
-              <Mail size={16} />
-              <span>Send Me an Email</span>
-              <ArrowUpRight size={14} />
-            </a>
+            <div className="flex flex-col items-center gap-3">
+              <a
+                href={`mailto:${personal.email}`}
+                className="btn-primary"
+              >
+                <Mail size={16} />
+                <span>Send Me an Email</span>
+                <ArrowUpRight size={14} />
+              </a>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-[#a78bfa] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-purple-500/50 rounded"
+              >
+                {copied ? <Check size={13} className="text-purple-400" /> : <Copy size={13} />}
+                <span>{copied ? 'Copied to clipboard' : `Or copy: ${personal.email}`}</span>
+              </button>
+            </div>
           </motion.div>
         </div>
       </div>
