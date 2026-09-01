@@ -16,8 +16,8 @@ export const education: Education[] = [
     specialization: 'Marketing',
     institution: 'UPES, Dehradun',
     status: 'Currently Pursuing',
-    startYear: '2025',
-    endYear: '2027',
+    startYear: '2026',
+    endYear: '2028',
     details: '',
   },
   {
