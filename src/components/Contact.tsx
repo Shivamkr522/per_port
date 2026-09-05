@@ -100,7 +100,7 @@ export default function Contact() {
             {/* Contact Items */}
             <div className="space-y-6 mb-8">
               {contactItems.map((item) => (
-                <div key={item.label} className="flex items-center justify-center gap-4">
+                <div key={item.label} className="flex items-center gap-4">
                   <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
                     <item.icon size={18} className="text-[#a78bfa]" />
                   </div>
