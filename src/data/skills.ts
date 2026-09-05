@@ -22,15 +22,13 @@ export const skillCategories: SkillCategory[] = [
     name: 'Analytics & Productivity',
     skills: [
       'Microsoft Excel',
-      'Data Analysis',
-      'Sales Analysis',
       'Microsoft PowerPoint',
-      'Excel-Based Account Tracking',
+      'Microsoft Word',
     ],
   },
   {
     id: 'technology',
     name: 'Technology',
-    skills: ['Python (Fundamentals)', 'AI-Assisted Development', 'Microsoft Office'],
+    skills: ['AI-Assisted Development', 'Microsoft Office'],
   },
 ];

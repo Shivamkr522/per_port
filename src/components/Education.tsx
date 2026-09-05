@@ -10,7 +10,7 @@ export default function Education() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="bg-[#0b0b0d] border-t border-white/[0.05] section-padding" ref={ref}>
+    <section id="education" className="bg-[#0b0b0d] border-t border-white/[0.05] section-padding" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

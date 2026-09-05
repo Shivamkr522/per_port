@@ -76,7 +76,7 @@ export default function Certifications() {
   if (total === 0) return null;
 
   return (
-    <section className="section-padding relative overflow-hidden" ref={ref}>
+    <section id="certification" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="section-container">
         {/* Section Header */}
         <motion.div

@@ -8,6 +8,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 
 export default function Hero() {
   const [imageError, setImageError] = useState(false);
+  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
   const hasCustomImage = Boolean(personal.profileImage) && !imageError;
 
   const scrollTo = (href: string) => {
@@ -88,26 +89,69 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
+              onMouseEnter={() => setIsAvatarHovered(true)}
+              onMouseLeave={() => setIsAvatarHovered(false)}
             >
-              {/* Outer Ambient Glow */}
-              <div className="absolute -inset-6 rounded-full bg-purple-600/20 blur-3xl -z-10 pointer-events-none" />
+              {/* Outer Ambient Glow — intensifies on hover */}
+              <motion.div
+                className="absolute -inset-6 rounded-full bg-purple-600/20 blur-3xl -z-10 pointer-events-none"
+                animate={{
+                  opacity: isAvatarHovered ? 0.9 : 0.5,
+                  scale: isAvatarHovered ? 1.15 : 1,
+                }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+              />
 
-              {/* Decorative Concentric Rings */}
-              <div className="absolute -inset-3 rounded-full border border-purple-500/20 pointer-events-none" />
-              <div className="absolute -inset-1.5 rounded-full border border-purple-500/30 pointer-events-none" />
+              {/* Decorative Concentric Rings — gently breathe outward on hover, the same lines moving rather than new ones appearing */}
+              <motion.div
+                className="absolute -inset-3 rounded-full border border-purple-500/20 pointer-events-none"
+                animate={
+                  isAvatarHovered
+                    ? { scale: [1, 1.12, 1], opacity: [1, 0.4, 1] }
+                    : { scale: 1, opacity: 1 }
+                }
+                transition={
+                  isAvatarHovered
+                    ? { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+                    : { duration: 0.6, ease: 'easeOut' }
+                }
+              />
+              <motion.div
+                className="absolute -inset-1.5 rounded-full border border-purple-500/30 pointer-events-none"
+                animate={
+                  isAvatarHovered
+                    ? { scale: [1, 1.08, 1], opacity: [1, 0.5, 1] }
+                    : { scale: 1, opacity: 1 }
+                }
+                transition={
+                  isAvatarHovered
+                    ? { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }
+                    : { duration: 0.6, ease: 'easeOut' }
+                }
+              />
 
               {/* Circular Avatar Container */}
               <div className="relative w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-white/20 bg-gradient-to-br from-[#1c1c24] via-[#101014] to-[#0a0a0c] shadow-2xl flex items-center justify-center">
                 {hasCustomImage ? (
-                  <Image
-                    src={personal.profileImage}
-                    alt={`${personal.name} - Aspiring Product Manager`}
-                    fill
-                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 240px"
-                    className="object-cover"
-                    priority
-                    onError={() => setImageError(true)}
-                  />
+                  <>
+                    <Image
+                      src={personal.profileImage}
+                      alt={`${personal.name} - Aspiring Product Manager`}
+                      fill
+                      sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 240px"
+                      className="object-cover pointer-events-none select-none"
+                      priority
+                      draggable={false}
+                      onError={() => setImageError(true)}
+                    />
+                    {/* Transparent overlay: blocks the browser's native image hover/save/drag affordances
+                        (e.g. Edge's inline download icon) by keeping the cursor over a plain div, not the <img> */}
+                    <div
+                      className="absolute inset-0 z-10"
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
+                    />
+                  </>
                 ) : (
                   /* Intentional Designer Fallback */
                   <div className="flex flex-col items-center justify-center text-center p-6 select-none relative z-10">
