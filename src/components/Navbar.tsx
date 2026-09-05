@@ -22,7 +22,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sectionIds = ['about', 'skills', 'projects', 'experience', 'contact'];
+      const sectionIds = ['about', 'skills', 'projects', 'experience', 'education', 'certification', 'contact'];
       let current = '';
       for (const id of sectionIds) {
         const el = document.getElementById(id);
